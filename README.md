@@ -1,0 +1,1 @@
+My Stock Manager Project
