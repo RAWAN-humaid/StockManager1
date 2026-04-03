@@ -66,23 +66,7 @@ background: linear-gradient(135deg, #f5f7ff, #dbe4ff);}
   margin-bottom: 28px;
 }
 
-.brand-icon {
-  width: 28px;
-  height: 28px;
-  border-radius: 8px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: #635bff;
-  color: #ffffff;
-  font-size: 14px;
-}
 
-.brand-text {
-  font-size: 20px;
-  font-weight: 700;
-  color: #30374a;
-}
 
 .title {
   font-size: 52px;

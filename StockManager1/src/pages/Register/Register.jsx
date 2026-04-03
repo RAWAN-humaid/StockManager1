@@ -1,29 +1,60 @@
-
-import "./Register.css"
-import Input from "../../components/Input/Input"
-import Button from "../../components/Button/Button"
+import "./Register.css";
+import Input from "../../components/Input/Input";
+import Button from "../../components/Button/Button";
+import registerImg from "../../assets/register.jpg";
 
 function Register() {
   return (
-    <div className="register-container">
-      <div className="register-box">
-        <h1>Register</h1>
+    <div className="register-page">
+      <div className="register-card">
+        <div className="register-right">
+          <div className="register-form-box">
+            <h1 className="register-title">Create Account</h1>
+            <p className="register-subtitle">
+              Join us today and start managing your stock easily
+            </p>
 
-        <form>
-          <label>Full Name</label>
-          <Input type="text" placeholder="Enter your full name" name="fullName" />
+            <form className="register-form">
+              <div className="name-row">
+                <div className="field half">
+                  <label>First name</label>
+                  <Input type="text" placeholder="First name" name="firstName" />
+                </div>
 
-          <label>Email</label>
-          <Input type="email" placeholder="Enter your email" name="email" />
+                <div className="field half">
+                  <label>Last name</label>
+                  <Input type="text" placeholder="Last name" name="lastName" />
+                </div>
+              </div>
 
-          <label>Password</label>
-          <Input type="password" placeholder="Enter your password" name="password" />
+              <div className="field">
+                <label>Email</label>
+                <Input type="email" placeholder="Enter your email" name="email" />
+              </div>
 
-          <Button text="Register" type="submit" />
-        </form>
+              <div className="field">
+                <label>Phone number</label>
+                <Input type="text" placeholder="Enter your phone number" name="phone" />
+              </div>
+
+              <div className="field">
+                <label>Password</label>
+                <Input type="password" placeholder="Enter your password" name="password" />
+              </div>
+
+              <div className="register-btn">
+                <Button text="Create Account" />
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <div className="register-left">
+          <img src={registerImg} alt="Register" />
+        </div>
       </div>
     </div>
-  )
+  );
 }
 
-export default Register
+export default Register;
