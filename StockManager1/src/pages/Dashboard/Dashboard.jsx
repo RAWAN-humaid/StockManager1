@@ -3,131 +3,167 @@ import "./Dashboard.css";
 function Dashboard() {
   return (
     <div className="dashboard-page">
-      <div className="dashboard-topbar">
+      <div className="dashboard-header">
         <div>
-          <h1 className="dashboard-heading">Dashboard</h1>
-          <p className="dashboard-subtitle">Bunny Inventory Dashboard</p>
+          <p className="dashboard-label">Inventory Dashboard</p>
+          <h1 className="dashboard-title">Overview</h1>
         </div>
 
-        <div className="dashboard-actions">
-          <input type="text" placeholder="Search" className="search-box" />
-          <div className="icon-circle"></div>
-          <div className="icon-circle"></div>
-          <div className="icon-circle"></div>
+        <div className="dashboard-header-right">
+          <input
+            type="text"
+            placeholder="Search"
+            className="dashboard-search"
+          />
+
+          <select className="dashboard-filter">
+            <option>Last 30 Days</option>
+            <option>Last 7 Days</option>
+            <option>This Month</option>
+          </select>
         </div>
       </div>
 
-      <div className="stats-grid">
+      <div className="stats-row">
         <div className="stat-card">
-          <h4>Total Products</h4>
-          <h2>1284</h2>
+          <p>Total Products</p>
+          <h3>1284</h3>
+          <span>+11.01%</span>
         </div>
 
         <div className="stat-card">
-          <h4>Available Quantity</h4>
-          <h2>982</h2>
+          <p>Available Quantity</p>
+          <h3>982</h3>
+          <span>-0.03%</span>
         </div>
 
         <div className="stat-card">
-          <h4>Low Stock Alerts</h4>
-          <h2>34</h2>
+          <p>Low Stock Alerts</p>
+          <h3>34</h3>
+          <span>+15.03%</span>
         </div>
 
         <div className="stat-card">
-          <h4>Out of Stock Alerts</h4>
-          <h2>12</h2>
+          <p>Out of Stock Alerts</p>
+          <h3>12</h3>
+          <span>+6.08%</span>
         </div>
       </div>
 
       <div className="middle-grid">
-        <div className="big-chart-card">
-          <div className="card-header">
+        <div className="main-card">
+          <div className="card-head">
             <h3>Stock Movement (In / Out)</h3>
             <span>Monthly Stock Activity</span>
           </div>
 
           <div className="fake-line-chart">
-            <div className="line one"></div>
-            <div className="line two"></div>
+            <div className="line-one"></div>
+            <div className="line-two"></div>
           </div>
         </div>
 
         <div className="side-card">
-          <h3>Most Requested Products</h3>
+          <div className="card-head">
+            <h3>Most Requested Products</h3>
+          </div>
 
           <div className="request-item">
             <span>Carton Boxes</span>
-            <div className="mini-bar"><div className="fill w70"></div></div>
+            <div className="progress">
+              <div className="fill w68"></div>
+            </div>
           </div>
 
           <div className="request-item">
             <span>Plastic Containers</span>
-            <div className="mini-bar"><div className="fill w55"></div></div>
+            <div className="progress">
+              <div className="fill w52"></div>
+            </div>
           </div>
 
           <div className="request-item">
             <span>Office Paper</span>
-            <div className="mini-bar"><div className="fill w40"></div></div>
+            <div className="progress">
+              <div className="fill w38"></div>
+            </div>
           </div>
 
           <div className="request-item">
             <span>Labels Roll</span>
-            <div className="mini-bar"><div className="fill w50"></div></div>
+            <div className="progress">
+              <div className="fill w46"></div>
+            </div>
           </div>
 
           <div className="request-item">
             <span>Cleaning Liquid</span>
-            <div className="mini-bar"><div className="fill w35"></div></div>
+            <div className="progress">
+              <div className="fill w34"></div>
+            </div>
           </div>
 
           <div className="request-item">
             <span>Safety Gloves</span>
-            <div className="mini-bar"><div className="fill w60"></div></div>
+            <div className="progress">
+              <div className="fill w42"></div>
+            </div>
           </div>
         </div>
       </div>
 
       <div className="bottom-grid">
         <div className="chart-card">
-          <h3>Products by Category</h3>
+          <div className="card-head">
+            <h3>Products by Category</h3>
+          </div>
+
           <div className="bar-chart">
-            <div className="bar-col">
-              <div className="bar-value h60"></div>
+            <div className="bar-item">
+              <div className="bar h70 c1"></div>
               <span>Raw</span>
             </div>
-            <div className="bar-col">
-              <div className="bar-value h90"></div>
+
+            <div className="bar-item">
+              <div className="bar h120 c2"></div>
               <span>Finished</span>
             </div>
-            <div className="bar-col">
-              <div className="bar-value h70"></div>
+
+            <div className="bar-item">
+              <div className="bar h90 c3"></div>
               <span>Pack</span>
             </div>
-            <div className="bar-col">
-              <div className="bar-value h100"></div>
+
+            <div className="bar-item">
+              <div className="bar h135 c4"></div>
               <span>Spare</span>
             </div>
-            <div className="bar-col">
-              <div className="bar-value h45"></div>
+
+            <div className="bar-item">
+              <div className="bar h55 c5"></div>
               <span>Office</span>
             </div>
-            <div className="bar-col">
-              <div className="bar-value h85"></div>
+
+            <div className="bar-item">
+              <div className="bar h110 c6"></div>
               <span>Cleaning</span>
             </div>
           </div>
         </div>
 
         <div className="chart-card">
-          <h3>Stock Status</h3>
+          <div className="card-head">
+            <h3>Stock Status</h3>
+          </div>
+
           <div className="status-box">
-            <div className="donut"></div>
+            <div className="donut-chart"></div>
 
             <div className="status-list">
-              <p><span className="dot dot1"></span> In Stock</p>
-              <p><span className="dot dot2"></span> Low Stock</p>
-              <p><span className="dot dot3"></span> Out of Stock</p>
-              <p><span className="dot dot4"></span> Reserved</p>
+              <p><span className="dot d1"></span> In Stock</p>
+              <p><span className="dot d2"></span> Low Stock</p>
+              <p><span className="dot d3"></span> Out of Stock</p>
+              <p><span className="dot d4"></span> Reserved</p>
             </div>
           </div>
         </div>

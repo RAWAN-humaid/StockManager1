@@ -12,7 +12,7 @@ function Layout({ children }) {
   return (
     <div className="dashboard-layout">
       <aside className="sidebar">
-        <div>
+        <div className="sidebar-top">
           <div className="profile-box">
             <div className="profile-avatar">R</div>
             <div>
@@ -65,7 +65,7 @@ function Layout({ children }) {
         </button>
       </aside>
 
-      <div className="dashboard-main">{children}</div>
+      <main className="dashboard-main">{children}</main>
     </div>
   );
 }
