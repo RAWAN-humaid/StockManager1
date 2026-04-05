@@ -1,4 +1,16 @@
 import { NavLink, useNavigate } from "react-router-dom";
+import sidebarImg from "../../assets/sidebar.jpg";
+import {
+  FaHome,
+  FaThLarge,
+  FaPlusSquare,
+  FaCog,
+  FaSignOutAlt,
+  FaBell,
+  FaEnvelope,
+  FaSearch,
+  FaChevronLeft,
+} from "react-icons/fa";
 import "./Layout.css";
 
 function Layout({ children }) {
@@ -10,16 +22,19 @@ function Layout({ children }) {
   };
 
   return (
-    <div className="dashboard-layout">
+    <div className="app-shell">
       <aside className="sidebar">
-        <div>
-          <div className="profile-box">
-            <div className="profile-avatar">R</div>
-            <div>
-              <h3>Rawan</h3>
-              <p>Stock Manager</p>
-            </div>
-          </div>
+        <div className="logo-section">
+
+  <div className="logo-img-box">
+    <img src={sidebarImg} alt="Sidebar Logo" />
+  </div>
+
+  <h2 className="logo-text">Stock Manager</h2>
+
+</div>
+
+        <div className="sidebar-top">
 
           <nav className="sidebar-menu">
             <NavLink
@@ -28,7 +43,8 @@ function Layout({ children }) {
                 isActive ? "menu-item active" : "menu-item"
               }
             >
-              Home
+              <FaHome />
+              <span>Home</span>
             </NavLink>
 
             <NavLink
@@ -37,7 +53,8 @@ function Layout({ children }) {
                 isActive ? "menu-item active" : "menu-item"
               }
             >
-              Dashboard
+              <FaThLarge />
+              <span>Dashboard</span>
             </NavLink>
 
             <NavLink
@@ -46,7 +63,8 @@ function Layout({ children }) {
                 isActive ? "menu-item active" : "menu-item"
               }
             >
-              Add Product
+              <FaPlusSquare />
+              <span>Add Product</span>
             </NavLink>
 
             <NavLink
@@ -55,17 +73,45 @@ function Layout({ children }) {
                 isActive ? "menu-item active" : "menu-item"
               }
             >
-              Settings
+              <FaCog />
+              <span>Settings</span>
             </NavLink>
           </nav>
         </div>
 
-        <button className="logout-btn" onClick={handleLogout}>
-          Log Out
-        </button>
+        <div className="sidebar-bottom">
+          <button className="menu-item logout-item" onClick={handleLogout}>
+            <FaSignOutAlt />
+            <span>Log Out</span>
+          </button>
+        </div>
       </aside>
 
-      <div className="dashboard-main">{children}</div>
+      <div className="main-side">
+        <header className="topbar">
+          <div className="topbar-search">
+            <FaSearch className="search-icon" />
+            <input type="text" placeholder="Try search product..." />
+          </div>
+
+          <div className="topbar-right">
+            <button className="icon-circle" type="button">
+              <FaBell />
+            </button>
+
+            <button className="icon-circle" type="button">
+              <FaEnvelope />
+            </button>
+
+            <div className="user-box">
+              <div className="user-avatar">R</div>
+              <span>Rawan</span>
+            </div>
+          </div>
+        </header>
+
+        <main className="content-area">{children}</main>
+      </div>
     </div>
   );
 }

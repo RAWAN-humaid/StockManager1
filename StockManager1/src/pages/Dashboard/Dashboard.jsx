@@ -129,7 +129,7 @@ function Dashboard() {
               <p><span className="dot dot3"></span> Out of Stock</p>
               <p><span className="dot dot4"></span> Reserved</p>
             </div>
-          </div>
+        </div>
         </div>
       </div>
     </div>
