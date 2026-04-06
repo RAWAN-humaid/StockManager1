@@ -7,14 +7,16 @@ import Dashboard from "./pages/Dashboard/Dashboard";
 import AddProduct from "./pages/AddProduct/AddProduct";
 import Settings from "./pages/Settings/Settings";
 import Layout from "./components/Layout/Layout";
-
 function App() {
   return (
     <BrowserRouter>
       <Routes>
+
+        {/* بدون Layout */}
         <Route path="/" element={<Login />} />
         <Route path="/register" element={<Register />} />
 
+        {/* مع Layout */}
         <Route
           path="/home"
           element={
@@ -50,6 +52,7 @@ function App() {
             </Layout>
           }
         />
+
       </Routes>
     </BrowserRouter>
   );
