@@ -3,9 +3,10 @@ import Input from "../../components/Input/Input";
 import Button from "../../components/Button/Button";
 import loginImg from "../../assets/Login.jpg";
 import { loginSchema } from "./LoginSchema.js";
+import { login } from "../../Serivces/AuthSerivce";
 
 function Login() {
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     const formData = {
@@ -15,7 +16,10 @@ function Login() {
 
     try {
       loginSchema.parse(formData);
+      const response =await login(formData);
       console.log("Valid ✅", formData);
+      console.log("Response from API:", response);
+      localStorage.setItem("token", response.token);
     } catch (err) {
       console.log("Error ❌", err.errors);
     }
