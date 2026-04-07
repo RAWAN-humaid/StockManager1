@@ -2,19 +2,34 @@ import "./Login.css";
 import Input from "../../components/Input/Input";
 import Button from "../../components/Button/Button";
 import loginImg from "../../assets/Login.jpg";
+import { loginSchema } from "./LoginSchema.js";
 
 function Login() {
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    const formData = {
+      email: e.target.email.value,
+      password: e.target.password.value,
+    };
+
+    try {
+      loginSchema.parse(formData);
+      console.log("Valid ✅", formData);
+    } catch (err) {
+      console.log("Error ❌", err.errors);
+    }
+  };
+
   return (
     <div className="login-page">
       <div className="login-card">
         <div className="login-left">
           <div className="form-box">
-            
-
             <h1 className="title">Welcome Back!</h1>
             <p className="subtitle">Please enter your details</p>
 
-            <form className="form">
+            <form className="form" onSubmit={handleSubmit}>
               <label>Email Address</label>
               <Input
                 type="email"
@@ -30,7 +45,6 @@ function Login() {
               />
 
               <div className="options">
-
                 <span className="forgot">Forgot password?</span>
               </div>
 

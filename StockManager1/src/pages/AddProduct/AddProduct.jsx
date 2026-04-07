@@ -1,6 +1,7 @@
 import "./AddProduct.css";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { productSchema } from "./productSchema";
 
 function AddProduct() {
   const navigate = useNavigate();
@@ -38,13 +39,13 @@ function AddProduct() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (
-      product.name.trim() === "" ||
-      product.quantity.trim() === "" ||
-      product.category.trim() === "" ||
-      !imagePreview
-    ) {
-      setError("Please fill all required fields");
+    const result = productSchema.safeParse({
+      ...product,
+      image: imagePreview,
+    });
+
+    if (!result.success) {
+      setError(result.error.issues[0].message);
       return;
     }
 
@@ -53,10 +54,9 @@ function AddProduct() {
 
   return (
     <div className="add-product-page">
-      <h1 className="page-title">Add  New  product</h1>
+      <h1 className="page-title">Add New Product</h1>
 
       <form className="add-product-layout" onSubmit={handleSubmit}>
-        {/* Left side */}
         <div className="image-section">
           <label className="field-label">Product Image *</label>
 
@@ -64,23 +64,23 @@ function AddProduct() {
             {imagePreview ? (
               <img src={imagePreview} alt="Preview" className="preview-image" />
             ) : (
-             <div className="image-placeholder">
-  <svg
-    width="60"
-    height="60"
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="#c0c6d4"
-    strokeWidth="1.5"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-  >
-    <rect x="3" y="3" width="18" height="18" rx="3" />
-    <circle cx="9" cy="9" r="1.5" />
-    <path d="M21 15l-5-5L5 21" />
-    <path d="M16 5h3v3" />
-  </svg>
-</div>
+              <div className="image-placeholder">
+                <svg
+                  width="60"
+                  height="60"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="#c0c6d4"
+                  strokeWidth="1.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <rect x="3" y="3" width="18" height="18" rx="3" />
+                  <circle cx="9" cy="9" r="1.5" />
+                  <path d="M21 15l-5-5L5 21" />
+                  <path d="M16 5h3v3" />
+                </svg>
+              </div>
             )}
           </label>
 
@@ -99,7 +99,6 @@ function AddProduct() {
           <p className="image-note">Max File Size : 5MB</p>
         </div>
 
-        {/* Right side */}
         <div className="form-section">
           <div className="form-grid">
             <div className="field full-width">

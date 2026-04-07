@@ -1,13 +1,13 @@
 import "./Home.css";
 import { useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
-
+import { productsSchema } from "./HomeSchema.js";
 function Home() {
   const [filter, setFilter] = useState("All");
   const navigate = useNavigate();
   const [search, setSearch] = useState("");
 
-  const products = [
+  const products = productsSchema.parse([
     {
       id: "PRD-1001",
       name: "Laptop",
@@ -64,7 +64,7 @@ function Home() {
       quantity: 1,
       status: "Low Stock",
     },
-  ];
+  ]);
 
   const filteredProducts = useMemo(() => {
     return products.filter((item) => {
@@ -77,7 +77,7 @@ function Home() {
 
       return matchSearch && matchFilter;
     });
-  }, [search, filter]);
+  }, [products, search, filter]);
 
   return (
     <div className="home-page">
